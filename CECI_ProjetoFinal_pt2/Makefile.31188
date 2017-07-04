@@ -1,0 +1,15 @@
+
+ALLIANCE_LIBRARY = -L$(ALLIANCE_TOP)/lib \
+                     -lPgn \
+                     -lPpt \
+                     -lPhl \
+                     -lPat \
+                     -lMut \
+                     -lRcn
+
+
+ALLIANCE_INC = -I$(ALLIANCE_TOP)/include 
+
+DATAPATH : DATAPATH.c
+	$(CC)  -o DATAPATH DATAPATH.c $(ALLIANCE_INC) $(ALLIANCE_LIBRARY)
+

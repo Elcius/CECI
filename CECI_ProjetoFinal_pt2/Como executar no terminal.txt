@@ -1,0 +1,2 @@
+digite dentro do difetorio onde esta o datapath.c instrucoes.txt fsm.h :
+genpat DATAPATH

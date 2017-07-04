@@ -1,0 +1,85 @@
+cc  -o DATAPATH DATAPATH.c -I/usr/lib64/alliance/include  -L/usr/lib64/alliance/lib -lPgn -lPpt -lPhl -lPat -lMut -lRcn
+In file included from DATAPATH.c:7:0:
+FSM.h:4:89: warning: useless storage class specifier in empty declaration
+ typedef enum{ S0, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S6_0, S6_1, S6_2, S6_3, S6_4};
+                                                                                         ^
+FSM.h: In function ‘setRegisters’:
+FSM.h:35:5: error: assignment to expression with array type
+  rs = reg_s;
+     ^
+FSM.h:36:5: error: assignment to expression with array type
+  rt = reg_t;
+     ^
+FSM.h:37:5: error: assignment to expression with array type
+  rd = reg_d;
+     ^
+FSM.h: In function ‘MaquinaDeEstados’:
+FSM.h:57:4: warning: implicit declaration of function ‘datapath’ [-Wimplicit-function-declaration]
+    datapath(clk, clka, FSMIorD, FSMIRWrite, FSMPCSrc, AluControl, FSMAluSrcA, FSMAluSrcB, PCEn, rst, codigo);
+    ^
+FSM.h:58:4: warning: implicit declaration of function ‘AfctFSM’ [-Wimplicit-function-declaration]
+    AfctFSM(rst, opcode, funct);
+    ^
+FSM.h:75:6: warning: implicit declaration of function ‘datapathFetch’ [-Wimplicit-function-declaration]
+      datapathFetch(clk,clka,FSMIorD,FSMIRWrite,FSMPCSrc,AluControl,FSMAluSrcA,FSMAluSrcB,PCEn,rst,codigo);
+      ^
+FSM.h:189:17: warning: implicit declaration of function ‘AluOp’ [-Wimplicit-function-declaration]
+      FSMAluOp = AluOp(opcode);
+                 ^
+FSM.h:190:19: warning: implicit declaration of function ‘setAluControl’ [-Wimplicit-function-declaration]
+      AluControl = setAluControl(AluOp(opcode), funct);
+                   ^
+FSM.h:193:6: warning: implicit declaration of function ‘Execute’ [-Wimplicit-function-declaration]
+      Execute(funct, ALUControl, FSMAluSrcA, FSMAluSrcB, rs, rt, rd);
+      ^
+FSM.h:193:21: error: ‘ALUControl’ undeclared (first use in this function)
+      Execute(funct, ALUControl, FSMAluSrcA, FSMAluSrcB, rs, rt, rd);
+                     ^
+FSM.h:193:21: note: each undeclared identifier is reported only once for each function it appears in
+FSM.h: At top level:
+FSM.h:262:6: warning: conflicting types for ‘AfctFSM’
+ void AfctFSM(int reset, int opcode, int Funct){
+      ^
+FSM.h:58:4: note: previous implicit declaration of ‘AfctFSM’ was here
+    AfctFSM(rst, opcode, funct);
+    ^
+DATAPATH.c: In function ‘inttostr’:
+DATAPATH.c:21:15: warning: implicit declaration of function ‘mbkalloc’ [-Wimplicit-function-declaration]
+  str = (char*)mbkalloc(32*sizeof(char));
+               ^
+DATAPATH.c:21:8: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  str = (char*)mbkalloc(32*sizeof(char));
+        ^
+DATAPATH.c: In function ‘inttoHstr’:
+DATAPATH.c:29:8: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  str = (char *) mbkalloc (32 * sizeof (char));
+        ^
+DATAPATH.c: At top level:
+DATAPATH.c:138:6: warning: conflicting types for ‘datapathFetch’
+ void datapathFetch(int clock, int clockA, int IorD, int IRWrite, int PCSrc, int ALUControl, int AluSrcA, int AluSrcB, int PCen, int Reset, int CODIGO)
+      ^
+In file included from DATAPATH.c:7:0:
+FSM.h:75:6: note: previous implicit declaration of ‘datapathFetch’ was here
+      datapathFetch(clk,clka,FSMIorD,FSMIRWrite,FSMPCSrc,AluControl,FSMAluSrcA,FSMAluSrcB,PCEn,rst,codigo);
+      ^
+DATAPATH.c:170:6: warning: conflicting types for ‘Execute’
+ void Execute(int funct, int ALUControl, int AluSrcA, int AluSrcB, int rs, int rt, int rd)
+      ^
+In file included from DATAPATH.c:7:0:
+FSM.h:193:6: note: previous implicit declaration of ‘Execute’ was here
+      Execute(funct, ALUControl, FSMAluSrcA, FSMAluSrcB, rs, rt, rd);
+      ^
+DATAPATH.c: In function ‘Execute’:
+DATAPATH.c:176:11: error: ‘label’ undeclared (first use in this function)
+    strcpy(label, "Execute_Add");
+           ^
+DATAPATH.c: At top level:
+DATAPATH.c:202:6: warning: conflicting types for ‘datapath’
+ void datapath(int clock, int clockA, int IorD, int IRWrite, int PCSrc, int ALUControl, int AluSrcA, int AluSrcB, int PCen, int Reset, int CODIGO)
+      ^
+In file included from DATAPATH.c:7:0:
+FSM.h:57:4: note: previous implicit declaration of ‘datapath’ was here
+    datapath(clk, clka, FSMIorD, FSMIRWrite, FSMPCSrc, AluControl, FSMAluSrcA, FSMAluSrcB, PCEn, rst, codigo);
+    ^
+Makefile.31267:14: recipe for target 'DATAPATH' failed
+make: *** [DATAPATH] Error 1
